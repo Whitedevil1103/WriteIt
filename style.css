@@ -13,10 +13,18 @@
     height: 350px;
 }
 
-.flickity {
+.flickity-button::before {
+    color: transparent;
+}
+
+.flickity-button {
     background: transparent;
 }
 
-.flickity-button:hover {
-    background: green;
+.flickity-prev-next-button:hover {
+    background: transparent;
+}
+
+.flickity-button::hover {
+    background-color: green;
 }

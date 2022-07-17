@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "./extensions/ms-python.python-2022.10.0/pythonFiles/lib/jedilsp/jedi/plugins"
+    ]
+}
