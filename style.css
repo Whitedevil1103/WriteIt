@@ -1,0 +1,22 @@
+.carousel-cell:before {
+    display: flex;
+    content: "";
+}
+
+.carousel-cell img {
+    height: 100%;
+    width: 98%;
+}
+
+.carousel-cell {
+    width: 450px;
+    height: 350px;
+}
+
+.flickity-button {
+    background: transparent;
+}
+
+.flickity-button:hover {
+    background: green;
+}

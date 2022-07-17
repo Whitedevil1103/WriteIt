@@ -1,0 +1,11 @@
+{
+	"whatsNewUri": "",
+	"isInternal": false,
+	"canCollectPII": false,
+	"nativeAuthFlow": true,
+	"authenticationProvider": "github",
+	"anonymousAuthReloadFlag": {
+		"workspaceId": "C48DB2797610B8E9C098FBD8CC71C1A56FA2",
+		"time": 1657607165543
+	}
+}
