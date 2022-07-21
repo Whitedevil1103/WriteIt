@@ -28,3 +28,7 @@
 .flickity-button::hover {
     background-color: green;
 }
+
+#RegisterForm {
+    margin-top: -120px;
+}
