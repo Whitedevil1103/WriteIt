@@ -19,6 +19,7 @@
 
 .flickity-button {
     background: transparent;
+
 }
 
 .flickity-prev-next-button:hover {
@@ -29,7 +30,42 @@
     background-color: green;
 }
 
-#RegisterForm {
-    margin-top: -120px;
-    border-radius: 2%;
+.form-container {
+    width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-group {
+    margin: 10px 0;
+    text-align: left;
+    width: 80%;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input,
+textarea {
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: lightblue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 10px;
 }
