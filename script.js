@@ -1,6 +1,3 @@
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-const firebase = require("firebase");
 
 var firebaseConfig = {
     apiKey: "AIzaSyBI1IVhOBYnURYkCEqdgVqPd9uFKw-C3j0",
@@ -12,8 +9,6 @@ var firebaseConfig = {
     appId: "1:1071369971138:web:c6a0404306520efe27a25b",
     measurementId: "G-YL1X367HSL"
 };
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 firebase.initializeApp(firebaseConfig);
 
 var database = firebase.database();
