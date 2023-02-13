@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+        integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <title>WriteIt</title>
 
@@ -47,13 +50,15 @@
                     after a day of menial labour, share a song, write poetry! WriteIt supports all forms of written
                     speech and presents it in a padlet like manner.</p>
                 <div class="flex justify-center">
-                    <a class="inline-flex text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded text-lg"
-                        href="TestBlog.html">Start
+                    <button
+                        class="inline-flex text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded text-lg"
+                        id="open-form-btn">Start
                         Writing Your Ideas
-                        Now </a>
+                        Now </button>
 
                 </div>
             </div>
+
             <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6"
                 data-flickity='{"wrapAround": true, "autoPlay": 2000, "freeScroll": true, "fade": true}' data-flickity>
                 <div class="carousel-cell"><img class="object-cover object-center rounded" alt="hero"
@@ -67,7 +72,40 @@
             </div>
         </div>
 
+
     </section>
+    <div class="form-container" id="form-container">
+        <i class="fas fa-times close-btn"></i>
+        <h2>New Blog Post</h2>
+        <form>
+            <div>
+                <label for="title-input">Title:</label>
+                <input type="text" id="title-input" name="title">
+            </div>
+            <div>
+                <label for="author-input">Author:</label>
+                <input type="text" id="author-input" name="author">
+            </div>
+            <div>
+                <label for="text-input">Text:</label>
+                <textarea id="text-input" name="text"></textarea>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script>
+        const openFormBtn = document.querySelector("#open-form-btn");
+        const formContainer = document.querySelector("#form-container");
+        const closeBtn = document.querySelector(".close-btn");
+
+        openFormBtn.addEventListener("click", function () {
+            formContainer.style.display = "block";
+        });
+
+        closeBtn.addEventListener("click", function () {
+            formContainer.style.display = "none";
+        });
+    </script>
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     <footer class="text-gray-600 body-font">
         <div
