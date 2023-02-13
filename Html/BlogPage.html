@@ -12,8 +12,104 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <title>WriteIt</title>
+    <style>
+        .form-container {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            width: 500px;
+            max-width: 100%;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px #888888;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-container form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .form-container form div {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .form-container form label {
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .form-container form input,
+        .form-container form textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #cccccc;
+        }
+
+        .form-container form button[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            background-color: #00A86B;
+            color: white;
+            font-size: 18px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .form-container form button[type="submit"]:hover {
+            background-color: #007749;
+        }
+
+        .form-container .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            color: #cccccc;
+        }
+
+        .form-container .close-btn:hover {
+            color: #888888;
+        }
+
+        .open-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            background-color: green;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 24px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .open-button:hover {
+            background-color: darkgreen;
+        }
+    </style>
+
 
 </head>
+
 
 <body>
     <header class="text-gray-600-body-font">
@@ -35,6 +131,46 @@
             </nav>
         </div>
     </header>
+    <button id="open-form-btn" class="bg-green-500 text-white rounded-full p-3">
+        <span class="fas fa-plus"></span>
+    </button>
+
+    <div class="form-container" id="form-container">
+
+        <i class="fas fa-times close-btn"></i>
+        <h2>New Blog Post</h2>
+        <form>
+            <div>
+                <label for="title-input">Title:</label>
+                <input type="text" id="title-input" name="title">
+            </div>
+            <div>
+                <label for="author-input">Author:</label>
+                <input type="text" id="author-input" name="author">
+            </div>
+            <div>
+                <label for="text-input">Text:</label>
+                <textarea id="text-input" name="text"></textarea>
+            </div>
+
+            <button type="submit">Submit</button>
+
+        </form>
+    </div>
+    <script>
+        const openFormBtn = document.querySelector("#open-form-btn");
+        const formContainer = document.querySelector("#form-container");
+        const closeBtn = document.querySelector(".close-btn");
+
+        openFormBtn.addEventListener("click", function () {
+            formContainer.style.display = "block";
+        });
+
+        closeBtn.addEventListener("click", function () {
+            formContainer.style.display = "none";
+        });
+    </script>
+
 
     <div class="flex justify-center mt-10">
         <div class="w-full max-w-sm bg-white rounded-lg shadow-lg overflow-hidden">
@@ -45,9 +181,16 @@
                 <div class="mt-2 text-gray-600">
                     by <span id="card-author"></span>
                 </div>
-                <p class="mt-4 text-gray-700">
-                    <span id="card-text"></span>
-                </p>
+                <div>
+                    <p class="mt-4 text-gray-700">
+                        <span id="card-text"></span>
+                    </p>
+
+                </div>
+                <div class="card-footer">
+                    <button id="delete-button">Delete</button>
+                </div>
+
             </div>
         </div>
     </div>
@@ -73,6 +216,9 @@
             cardTitle.textContent = titleInput.value;
             cardAuthor.textContent = authorInput.value;
             cardText.textContent = textInput.value;
+            formContainer.style.display = "none";
+
+
         });
 
         window.addEventListener("load", () => {
@@ -89,7 +235,12 @@
         });
         deleteButton.addEventListener("click", () => {
             localStorage.removeItem("cardTitle");
+            localStorage.removeItem("cardAuthor");
+            localStorage.removeItem("cardText");
+
             cardTitle.textContent = "";
+            cardAuthor.textContent = "";
+            cardText.textContent = "";
         });
 
     </script>
@@ -117,7 +268,8 @@
             </div>
             <div class="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
                 <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                    <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
+                    <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES
+                    </h2>
                     <nav class="list-none mb-10">
                         <li>
                             <a class="text-gray-600 hover:text-gray-800">First Link</a>
@@ -134,7 +286,8 @@
                     </nav>
                 </div>
                 <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                    <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
+                    <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES
+                    </h2>
                     <nav class="list-none mb-10">
                         <li>
                             <a class="text-gray-600 hover:text-gray-800">First Link</a>
@@ -151,7 +304,8 @@
                     </nav>
                 </div>
                 <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                    <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
+                    <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES
+                    </h2>
                     <nav class="list-none mb-10">
                         <li>
                             <a class="text-gray-600 hover:text-gray-800">First Link</a>
@@ -168,7 +322,8 @@
                     </nav>
                 </div>
                 <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                    <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
+                    <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES
+                    </h2>
                     <nav class="list-none mb-10">
                         <li>
                             <a class="text-gray-600 hover:text-gray-800">First Link</a>
